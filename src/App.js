@@ -12,7 +12,7 @@ function App() {
         <Router>
           <Header/>
           <Switch>
-            <Route exact path="/" children={<Home/>} />
+            <Route exact path="/"  children={<Home/>} />
             <Route path="/contato" children={<Contato/>} />
             <Route path="/not-found" children={<NotFound/>} />
           </Switch>

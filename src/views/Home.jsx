@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react'
 
+import Button from '../components/Button/Button'
+
+import API from '../services/API'
 
 export default function Home() {
   const [characters, setCharacters] = useState([])
-
-  useEffect(() => {
-    async function fetchData(){
-      const response = await fetch('https://rickandmortyapi.com/api/character/')
-      const data = await response.json()
-
-    setCharacters(data)
+    useEffect(() => {
+      async function loadCharacters() {
+        const response = await API.get('/')
+        //console.log(response.data)
+        setCharacters(response.data)
     }
-    fetchData()
-  }, [setCharacters])
+    loadCharacters()
+  }, [])
  
   return (
     <div>
@@ -30,6 +31,7 @@ export default function Home() {
           </li>
         ))}
       </ul>
+      <Button text="Carregar"/>
     </div>
   )
 }
